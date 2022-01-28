@@ -10,6 +10,7 @@ public class KPExample {
      */
 
     private int n;
+    private int precision = 1000;
     private Random rand = new Random();
 
     public double[] mtx;
@@ -18,7 +19,7 @@ public class KPExample {
     private void initBin() {
         this.mtx = new double[n];
         for (int i = 0; i < n; i++) {
-            mtx[i] = rand.nextDouble();
+            mtx[i] = (double) Math.round(rand.nextDouble() * precision) / precision ;
         }
     }
     
@@ -50,6 +51,15 @@ public class KPExample {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        String ret = "Number of bin: " + n + "\n";
+        for (int i = 0; i < n; i++) {
+            ret += mtx[i] + " ";
+        }
+        return ret;
     }
 
 }
